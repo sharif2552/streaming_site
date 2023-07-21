@@ -11,4 +11,4 @@ def details(request, id):
         item = video.objects.get(id=id)
         return render(request, 'details.html', {'item': item})
     else:
-        return HttpResponse("Error")
+        return HttpResponse("Error") 
