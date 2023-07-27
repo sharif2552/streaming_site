@@ -5,9 +5,9 @@ from .models import video, comment
 def home(request):
     items = video.objects.all()
     if request.method =='POST':
-        #print("post methos ")
+     
         searched_data = request.POST.get('search')
-        print("the search data is : "+ str(searched_data))
+
         videos = video.objects.filter(title__icontains=searched_data)
         return render(request, 'index.html', {'items': videos})
     return render(request, 'index.html', {'items': items})
@@ -17,7 +17,7 @@ def details(request, id):
     items = comment.objects.filter(video=item)
 
     if request.method == "POST":
-        print("method is POST")
+       
         commentt = request.POST.get('comment')  # Get the comment from the POST data
 
         if commentt:  # Check if the commentt variable is not empty
@@ -27,7 +27,7 @@ def details(request, id):
 
         return redirect('details', id=id)
 
-    print("method is GET")
+  
     item = {
         'item': item,
         'items' : items
