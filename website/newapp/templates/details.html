@@ -6,9 +6,22 @@
     <title>Document</title>
 </head>
 <body>
+
 <iframe height="250" width="500" src="{{item.url}}" frameborder="0"></iframe>
     
     <h1>{{item.title}}</h1>
+    <form method="POST" action="{% url 'details' item.id %}"> <!-- Use the correct name 'details_view' -->
+        {% csrf_token %}
+        <label for="comment">comment</label><br>
+        <div class="input-group input-group-lg">
+        <input style="background-color: darkgray;" id="comment" name="comment" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+    {% for vid in items %}
+    <li>
+        {{ vid.content }}<br>
+    </li>
+    {% endfor %} 
 </body>
 </html>
-

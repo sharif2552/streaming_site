@@ -128,6 +128,7 @@ STATICFILES_DIRS = [
 ]
 # Absolute filesystem path to the directory that will hold static files.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = '/media/'
+
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Additional locations of static files
