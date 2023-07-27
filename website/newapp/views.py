@@ -4,12 +4,17 @@ from .models import video, comment
 # Create your views here.
 def home(request):
     items = video.objects.all()
+    if request.method =='POST':
+        #print("post methos ")
+        searched_data = request.POST.get('search')
+        print("the search data is : "+ str(searched_data))
+        videos = video.objects.filter(title__icontains=searched_data)
+        return render(request, 'index.html', {'items': videos})
     return render(request, 'index.html', {'items': items})
 
 def details(request, id):
     item = get_object_or_404(video, id=id)
     items = comment.objects.filter(video=item)
-    print(items)
 
     if request.method == "POST":
         print("method is POST")
@@ -33,9 +38,7 @@ def details(request, id):
 def video_search(request):
 
     if request.method =='POST':
-        print("post methos ")
         searched_data = request.POST.get('search')
         videos = video.objects.filter(titile__tcontent=searched_data)
         return render(request, 'search_results.html', {'videos': videos})
-    print("get method ")
     return redirect('home')
