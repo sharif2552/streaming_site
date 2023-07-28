@@ -11,6 +11,21 @@
         </div>
     </nav>
 
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+            {% for category in chategories %}
+            <li><a class="dropdown-item" href="{% url 'category_template' category_id=category.pk %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+
+
+
     <div class="container">
         <div class="row">
             {% for item in items %}
