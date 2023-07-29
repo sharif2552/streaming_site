@@ -56,3 +56,38 @@ def category_template(request, category_id):
         'videos': videos,
     }
     return render(request, 'category_template.html', context)
+
+
+def add_video(request):
+    if request.method == 'POST':
+        # Get the form data from the request
+        title = request.POST.get('title')
+        print(title)
+        description = request.POST.get('description')
+        url = request.POST.get('url')
+        image = request.FILES.get('image')
+        category = request.POST.get('category')
+        selected_category = get_object_or_404(chategory, pk=category)
+        print("This is chategory "+category)
+        print("This is the selected chatecogy : " + str(selected_category))
+        category_id = chategory.objects.all()
+        
+        # Create and save the new Video object
+        new_video = video.objects.create(
+            title=title,
+            chategory=selected_category,
+            description=description,
+            url=url,
+            image=image
+        )
+        new_video.save()
+        
+        return redirect('/')
+    
+    # If the request method is not POST, show an empty form
+    category_id = chategory.objects.all()
+    context = {
+        'category_id' : category_id,
+    }
+    print("something is printing")
+    return render(request, 'add_video.html', context)

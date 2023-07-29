@@ -7,7 +7,7 @@
         {% for video in videos %}
             <li class="list-group-item">
                 <div class="row align-items-center">
-                    <div class="col-md-8 order-2"> <!-- Changed col-md-4 to col-md-8 and added order-2 -->
+                    <div class="col-md-8 order-2"> 
                         <a href="/details/{{ video.id }}"><h2>{{ video.title }}</h2>
                         
                         
@@ -16,7 +16,7 @@
                         <p>{{ video.description }}</p>
                         <a href="{{ video.url }}" class="btn btn-primary">Watch Video</a>
                     </div>
-                    <div class="col-md-4 order-1"> <!-- Changed col-md-6 to col-md-4 and added order-1 -->
+                    <div class="col-md-4 order-1"> 
                         <a href="/details/{{ video.id }}"> <img src="{{ video.image.url }}" alt="{{ video.title }}" class="img-fluid">  </a>   
                     </div>
                 </div>

@@ -11,6 +11,8 @@ urlpatterns = [
     path('details/<int:id>', views.details, name='details'),
     path('',views.home),
     path('category/<int:category_id>/', views.category_template, name='category_template'),
+    path('add_video/<int:category_id>/', views.add_video, name='add_video'),
+    path('add_video/', views.add_video, name='add_video'),
     # Other URL patterns...
 ]
 
